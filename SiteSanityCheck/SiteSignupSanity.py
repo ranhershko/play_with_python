@@ -2,7 +2,6 @@
 import time
 import logbook
 import random
-import os
 from pathlib import Path
 from SiteOpenPage import SiteOpenPage
 from selenium.webdriver import ActionChains
@@ -85,15 +84,15 @@ class SiteSignupSanity(SiteOpenPage):
 
     def drop_n_choose(self):
         """Click dropdown menu and choose """
-        search_type_link = self.current_browser.find_elements_by_link_text(self.current_search_category)
+        # search_type_link = self.current_browser.find_elements_by_link_text(self.current_search_category)
         WebDriverWait(self.current_browser, 20).until(ec.element_to_be_clickable(
             (By.LINK_TEXT, self.current_search_category)))
-        ActionChains(self.current_browser).move_to_element(search_type_link[0]).click().perform()
+        search_type_link = self.current_browser.find_elements_by_link_text(self.current_search_category)
+        ActionChains(self.current_browser).move_to_element(search_type_link[0]).click(search_type_link[0]).perform()
         opt_last_index = len(self.current_browser.find_elements_by_xpath(
             f"//li[text()=\'{self.current_search_category}\']/ancestor::ul[1]/li")) - 1
         chosen = random.randint(1, opt_last_index)
-        ActionChains(self.current_browser).move_to_element(self.current_browser.find_elements_by_xpath(
-            f"//li[@data-option-array-index='{chosen}']")[0]).click().perform()
+        ActionChains(self.current_browser).move_to_element(self.current_browser.find_elements_by_xpath(f"//li[@data-option-array-index='{chosen}']")[0]).click().perform()
 
     def link_n_click(self):
         """Find link locator and click"""
