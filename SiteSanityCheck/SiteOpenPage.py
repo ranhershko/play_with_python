@@ -17,8 +17,10 @@ class SiteOpenPage:
     def __init__(self):
         self.base_url = ""
         self.base_url_file = "site_url.txt"
-        self.browsers_drv = {'firefox': webdriver.Firefox, 'chrome': webdriver.Chrome}
-        self.drivers_files = {'firefox': 'geckodriver.exe', 'chrome': 'chromedriver.exe'}
+        # self.browsers_drv = {'firefox': webdriver.Firefox, 'chrome': webdriver.Chrome}
+        self.browsers_drv = {'chrome': webdriver.Chrome}
+        self.drivers_files = {'chrome': 'chromedriver.exe'}
+        # self.drivers_files = {'firefox': 'geckodriver.exe', 'chrome': 'chromedriver.exe'}
         self.active_browsers = defaultdict(dict)
         self.current_browser = ""
         self.first_name = ['Vadim', 'Mona', 'Angela', 'Anna', 'Alex', 'Danniela', 'Meital']

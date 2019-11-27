@@ -1,7 +1,9 @@
-import random
 from GuessGame import GuessGames
 from MemoryGame import MemoryGame
 from CurrencyRouletteGame import CurrencyRouletteGame
+from Score import Score
+import run_score
+
 
 run_program = True
 options = "Memory Game - a sequence of numbers will appear for 1 second and you have to guess it back,\
@@ -31,11 +33,15 @@ def selected_game(game_num, difficulty):
         its_awin = game.play()
         if its_awin:
             print("You win")
+            current_score = Score(difficulty)
+            current_score.add_score()
+
         else:
             print("You lose")     # USD = 3.51
 
     elif game_num == 4:
-        print("Goodbye")
+        print("Goodbye, Check your score in http://localhost (Press CTRL+C to quit)")
+        run_score.on_web()
         run_program = False
     return run_program
 

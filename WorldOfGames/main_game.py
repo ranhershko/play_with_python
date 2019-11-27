@@ -1,8 +1,8 @@
-from llive import load_game, welcome
+from live import load_game, welcome
 
 
 def main():
-    print(welcome("Guy"))
+    print(welcome("Danny"))
     load_game()
 
 

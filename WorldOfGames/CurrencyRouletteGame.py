@@ -8,9 +8,8 @@ class CurrencyRouletteGame():
         self._usd_amount = random.randint(1, 100)
 
     def get_money_interval(self):
-        api_key = input("Enter your currencyconverterapi.com api_key")
         usd_value = requests.get(
-            f"https://free.currconv.com/api/v7/convert?q=USD_ILS&compact=ultra&apiKey={api_key}").json()['USD_ILS']
+            f"https://api.exchangeratesapi.io/latest?base=USD&symbols=ILS").json()['rates']['ILS'] #['ILS']
         return self._usd_amount * usd_value - (5 - self._difficulty), self._usd_amount * usd_value + (
                 5 - self._difficulty)
 
