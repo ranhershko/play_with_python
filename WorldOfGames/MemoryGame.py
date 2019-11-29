@@ -1,7 +1,7 @@
 import random
 from time import sleep
 
-
+# the correct way is to use inheritence from a generic game class
 class MemoryGame():
     def __init__(self, difficulty):
         self._difficulty = difficulty
@@ -18,6 +18,8 @@ class MemoryGame():
         print(f"currently saw", end="")
         print(" - please enter comma separated values list: " if self._difficulty > 1 else "")
         secret_list = input().split(',')
+        # very hard to read and follow
+        # try avoiding large one liners, make the code short, with spaces, lines...
         while len(set([num for num in secret_list if num.isdigit()])) != self._difficulty:
             secret_list = input(f"The input {[num for num in secret_list]} you enter are not as request - try again: ")\
                 .split(',')

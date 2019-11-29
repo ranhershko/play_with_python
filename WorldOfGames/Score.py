@@ -11,6 +11,7 @@ class Score:
 
     def read_score_file(self):
         if self.user_score_file.exists():
+            # what if file does not exists? here is good idea to catche such exception
             with open(Utils.SCORES_FILE_NAME, "r", encoding='utf-8') as score_file:
                 lines = score_file.read().splitlines()
                 if len(lines) > 0 and lines[0].strip().isdigit():

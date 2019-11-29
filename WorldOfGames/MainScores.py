@@ -20,7 +20,7 @@ def score_server():
                 jinja2_file_serv = 'error.jinja2'
                 score_answer = f"The score value [{score_answer}] in {Utils.SCORES_FILE_NAME} file isn't a number"
         except:
-            jinja2_file_serv = my_path + '\\templates\\' + 'error.jinja2'
+            jinja2_file_serv = my_path + '\\templates\\' + 'error.jinja2' # use os.path too
             score_answer = f'Something went wrong when reading the {Utils.SCORES_FILE_NAME} file'
         finally:
             score_f.close()

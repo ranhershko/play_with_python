@@ -1,4 +1,5 @@
 # from application import app
+# if you install third party pkgs here, you should define a requrements.txt file and attach to the repo
 from flask import Flask, render_template
 from MainScores import score_server
 
@@ -15,5 +16,5 @@ def on_web():
     # app.jinja_env.cache = {}
     # app.config['TEMPLATES_AUTO_RELOAD'] = True
     # app.jinja_env.auto_reload = True
-    app.run(host='0.0.0.0', port=80,)
+    app.run(host='0.0.0.0', port=80,) # what if i already have nginx/apache web server running? :)
 
