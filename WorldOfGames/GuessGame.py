@@ -1,6 +1,6 @@
 import random
 
-
+# the correct way is to use inheritence from a generic game class
 class GuessGames():
     def __init__(self, difficulty):
         self.difficulty = difficulty
