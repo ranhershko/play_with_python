@@ -11,8 +11,13 @@ from selenium.webdriver.support import expected_conditions as ec
 
 
 class SiteSignupSanity(SiteOpenPage):
+    # is there any real use to inherit a class? do you use that class methods in this class? asking because i couldnt find any.
+    # const 1 = val 1, etc..
 
+    # In general, such initiaization should not happen in the __init__, rather thet can be as consts at the class level (look above)
+    # init is to initialize a class with properties, it something with state that changes from initialization to initialization
     def __init__(self):
+
         self.btn_css_span_click_on = {'signup_btn': "span[class='text-btn']"}
         self.account_info = {'account_info': 'החשבון שלי'}
         if self.__class__.__name__ == SiteSignupSanity.__name__ or not Path('chrome_user_info.txt').exists():

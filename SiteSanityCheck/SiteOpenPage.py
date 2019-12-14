@@ -13,7 +13,10 @@ from urllib3.exceptions import MaxRetryError
 
 
 class SiteOpenPage:
+    # const 1 = val 1, etc..
 
+    # In general, such initiaization should not happen in the __init__, rather thet can be as consts at the class level (look above)
+    # init is to initialize a class with properties, it something with state that changes from initialization to initialization
     def __init__(self):
         self.base_url = ""
         self.base_url_file = "site_url.txt"
@@ -32,13 +35,15 @@ class SiteOpenPage:
         self.generate_browser()
 
     @staticmethod
+    # such methods usually called "get_or_create", +1 for puttng it a static
     def create_dir_if_not_exists(directory):
         """Create logs & results dir """
         if not os.path.exists(directory):
             os.makedirs(directory)
         return directory
 
-    def get_user_info(self):
+    # internal used methods usually should start with underscore _<func name>
+    def get_user_info(self): # if the method creates user it should change to get_or_create too.
         """Create random user or get from file after signup"""
         user_info = defaultdict(dict)
         for browser_type in self.browsers_drv.keys():
@@ -92,7 +97,7 @@ class SiteOpenPage:
             logbook.TimedRotatingFileHandler(log_filename, level=level).push_application()
         msg = 'Sanity Logging initialized, level: {}, mode: {}' \
             .format(level, 'stdout mode' if not log_filename else 'file mode: ' + log_filename)
-        sanity_site_log = logbook.Logger(msg)
+        sanity_site_log = logbook.Logger(msg) # loggers are usually singletons and should be initialized ONCE for the whole run, not one per method, one per call, on per class
         sanity_site_log.notice(msg)
 
     @staticmethod
