@@ -6,6 +6,11 @@ import os
 
 
 class SiteHomeSearch(SiteSignupSanity):
+    # is there any real use to inherit a class? do you use that class methods in this class? asking because i couldnt find any.
+    # const 1 = val 1, etc..
+
+    # In general, such initiaization should not happen in the __init__, rather thet can be as consts at the class level (look above)
+    # init is to initialize a class with properties, it something with state that changes from initialization to initialization
     def __init__(self):
         self.SEARCH = {'AMOUNT': 'סכום', 'AREA': 'אזור', 'CATEGORY': "קטגוריה"}
         self.FIND_ME_A_GIFT = 'תמצאו לי מתנה'
